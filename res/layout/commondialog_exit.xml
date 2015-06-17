@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+   <TextView android:id="@+id/commondialog_exittips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+		android:layout_marginLeft="10dip"
+        android:textSize="20sp"
+        android:textColor="@color/commondialog_title_color"
+        android:gravity="left|center_vertical"
+        android:layout_alignParentLeft="true"
+        android:text="@string/exit_hintshow"
+        android:layout_centerVertical="true"
+        />
+   <ImageView android:id="@+id/commondialog_exitcheckbox"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dip"
+		android:layout_marginRight="10dip"
+       android:layout_alignParentRight="true"
+       android:src="@drawable/checkbox_normal"/>
+</RelativeLayout>

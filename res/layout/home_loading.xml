@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loading_bg" >
+
+    <ProgressBar
+        android:id="@+id/progress_horizontal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="146dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginRight="96dp"
+        android:progressDrawable="@drawable/loading_progress" />
+
+    <Button
+        android:id="@+id/gotoHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="30dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="21dp"
+        android:background="@drawable/btn_gohome_selector"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/gotoHome"
+        android:layout_alignBottom="@+id/gotoHome"
+        android:layout_alignRight="@+id/gotoHome"
+        android:layout_marginRight="52dp"
+        android:text="开始体验"
+        android:textColor="#FEFFFF"
+        android:textSize="24sp" />
+
+</RelativeLayout>

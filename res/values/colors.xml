@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffffff</color>
+    <color name="milky_white">#ffeeeeee</color>
+    <color name="black">#ff000000</color>
+    <color name="red">#ffff0000</color>
+    <color name="blue">#ff4593c9</color>
+    <color name="blue_light">#ff147bEE</color>
+    <color name="gray">#ff969696</color>
+    <color name="trans">#00000000</color>
+    <color name="commondialog_loading_color">#ff232323</color>
+    <color name="commondialog_title_color">#ff222222</color>
+    <color name="color_0">#ff6666</color>
+    <color name="color_1">#ccccff</color>
+    <color name="color_2">#9999cc</color>
+    <color name="color_3">#ffffcc</color>
+    <color name="color_4">#cccc33</color>
+    <color name="color_5">#cc9966</color>
+    <color name="color_6">#cccccc</color>
+    <color name="color_7">#cccc99</color>
+    <color name="color_8">#cc9966</color>
+    <color name="color_9">#ff99cc</color>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="exit_hintshow">不再提示</string>
+    <string name="confirm_title">确定</string>
+    <string name="cancle_title">取消</string>
+    <string name="commondialog_comfirmtitle">\u0020\u0020确定\u0020\u0020</string>
+    <string name="commondialog_cancletitle">\u0020\u0020取消\u0020\u0020</string>
+    <string name="commondialog_defaulttoptitle">提示</string>
+    <string name="commondialog_loadingtxt">加载数据,请稍候...</string>
+
+</resources>
