@@ -102,7 +102,6 @@ public class HomeLanucherActivity extends CommonActivity {
 
 	private void goHome() {
 		Intent i = new Intent(mContext, HomeMainActivity.class);
-		i.putExtra("int", "14");
 		startActivity(i);
 		finish();
 	}

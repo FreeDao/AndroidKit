@@ -1,9 +1,9 @@
 /*************************************************
-Copyright:  Copyright QIUJUER 2013.
-Author:		Qiujuer
-Date:		2014-04-18
-Description:实现图片模糊处理
-**************************************************/
+ Copyright:  Copyright QIUJUER 2013.
+ Author:		Qiujuer
+ Date:		2014-04-18
+ Description:实现图片模糊处理
+ **************************************************/
 #include<malloc.h>
 
 #define ABS(a) ((a)<(0)?(-a):(a))
@@ -11,39 +11,39 @@ Description:实现图片模糊处理
 #define MIN(a,b) ((a)<(b)?(a):(b))
 
 /*************************************************
-Function:		StackBlur(堆栈模糊)
-Description:    使用堆栈方式进行图片像素模糊处理
-Calls:          malloc
-Table Accessed: NULL
-Table Updated:	NULL
-Input:          像素点集合，图片宽，图片高，模糊半径
-Output:         返回模糊后的像素点集合
-Return:         返回模糊后的像素点集合
-Others:         NULL
-*************************************************/
+ Function:		StackBlur(堆栈模糊)
+ Description:    使用堆栈方式进行图片像素模糊处理
+ Calls:          malloc
+ Table Accessed: NULL
+ Table Updated:	NULL
+ Input:          像素点集合，图片宽，图片高，模糊半径
+ Output:         返回模糊后的像素点集合
+ Return:         返回模糊后的像素点集合
+ Others:         NULL
+ *************************************************/
 static int* StackBlur(int* pix, int w, int h, int radius) {
 	int wm = w - 1;
 	int hm = h - 1;
 	int wh = w * h;
 	int div = radius + radius + 1;
 
-	int *r = (int *)malloc(wh * sizeof(int));
-	int *g = (int *)malloc(wh * sizeof(int));
-	int *b = (int *)malloc(wh * sizeof(int));
+	int *r = (int *) malloc(wh * sizeof(int));
+	int *g = (int *) malloc(wh * sizeof(int));
+	int *b = (int *) malloc(wh * sizeof(int));
 	int rsum, gsum, bsum, x, y, i, p, yp, yi, yw;
 
-	int *vmin = (int *)malloc(MAX(w,h) * sizeof(int));
+	int *vmin = (int *) malloc(MAX(w,h) * sizeof(int));
 
 	int divsum = (div + 1) >> 1;
 	divsum *= divsum;
-	int *dv = (int *)malloc(256 * divsum * sizeof(int));
+	int *dv = (int *) malloc(256 * divsum * sizeof(int));
 	for (i = 0; i < 256 * divsum; i++) {
 		dv[i] = (i / divsum);
 	}
 
 	yw = yi = 0;
 
-	int(*stack)[3] = (int(*)[3])malloc(div * 3 * sizeof(int));
+	int (*stack)[3] = (int (*)[3]) malloc(div * 3 * sizeof(int));
 	int stackpointer;
 	int stackstart;
 	int *sir;
@@ -53,7 +53,8 @@ static int* StackBlur(int* pix, int w, int h, int radius) {
 	int rinsum, ginsum, binsum;
 
 	for (y = 0; y < h; y++) {
-		rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum = bsum = 0;
+		rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum =
+				bsum = 0;
 		for (i = -radius; i <= radius; i++) {
 			p = pix[yi + (MIN(wm, MAX(i, 0)))];
 			sir = stack[i + radius];
@@ -69,8 +70,7 @@ static int* StackBlur(int* pix, int w, int h, int radius) {
 				rinsum += sir[0];
 				ginsum += sir[1];
 				binsum += sir[2];
-			}
-			else {
+			} else {
 				routsum += sir[0];
 				goutsum += sir[1];
 				boutsum += sir[2];
@@ -128,7 +128,8 @@ static int* StackBlur(int* pix, int w, int h, int radius) {
 		yw += w;
 	}
 	for (x = 0; x < w; x++) {
-		rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum = bsum = 0;
+		rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum =
+				bsum = 0;
 		yp = -radius * w;
 		for (i = -radius; i <= radius; i++) {
 			yi = MAX(0, yp) + x;
@@ -149,8 +150,7 @@ static int* StackBlur(int* pix, int w, int h, int radius) {
 				rinsum += sir[0];
 				ginsum += sir[1];
 				binsum += sir[2];
-			}
-			else {
+			} else {
 				routsum += sir[0];
 				goutsum += sir[1];
 				boutsum += sir[2];
@@ -164,7 +164,8 @@ static int* StackBlur(int* pix, int w, int h, int radius) {
 		stackpointer = radius;
 		for (y = 0; y < h; y++) {
 			// Preserve alpha channel: ( 0xff000000 & pix[yi] )
-			pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16) | (dv[gsum] << 8) | dv[bsum];
+			pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16)
+					| (dv[gsum] << 8) | dv[bsum];
 
 			rsum -= routsum;
 			gsum -= goutsum;
@@ -215,5 +216,5 @@ static int* StackBlur(int* pix, int w, int h, int radius) {
 	free(vmin);
 	free(dv);
 	free(stack);
-	return(pix);
+	return (pix);
 }

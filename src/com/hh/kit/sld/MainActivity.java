@@ -12,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +23,6 @@ import com.hh.kit.R;
  * Design Support Library
  */
 public class MainActivity extends AppCompatActivity {
-	// 将ToolBar与TabLayout结合放入AppBarLayout
-	private Toolbar mToolbar;
 	// DrawerLayout中的左侧菜单控件
 	private NavigationView mNavigationView;
 	// DrawerLayout控件
@@ -45,23 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
 	private void initView() {
 		// MainActivity的布局文件中的主要控件初始化
-		mToolbar = (Toolbar) this.findViewById(R.id.tool_bar);
 		mDrawerLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
 		mNavigationView = (NavigationView) this
 				.findViewById(R.id.navigation_view);
 		mTabLayout = (TabLayout) this.findViewById(R.id.tab_layout);
 		mViewPager = (ViewPager) this.findViewById(R.id.view_pager);
 
-		// 初始化ToolBar
-		setSupportActionBar(mToolbar);
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setHomeAsUpIndicator(android.R.drawable.ic_dialog_alert);
-		actionBar.setDisplayHomeAsUpEnabled(true);
-
 		// 对NavigationView添加item的监听事件
 		mNavigationView.setNavigationItemSelectedListener(naviListener);
 		// 开启应用默认打开DrawerLayout
-//		mDrawerLayout.openDrawer(mNavigationView);
+		// mDrawerLayout.openDrawer(mNavigationView);
 		mDrawerLayout.closeDrawers();
 
 		// 初始化TabLayout的title数据集
@@ -69,15 +59,18 @@ public class MainActivity extends AppCompatActivity {
 		titles.add("details");
 		titles.add("share");
 		titles.add("agenda");
+		titles.add("test");
 		// 初始化TabLayout的title
 		mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
 		mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
 		mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
+		mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(3)));
 		// 初始化ViewPager的数据集
 		List<Fragment> fragments = new ArrayList<Fragment>();
 		fragments.add(new InfoDetailsFragment());
 		fragments.add(new ShareFragment());
 		fragments.add(new AgendaFragment());
+		fragments.add(new ScrollFragment());
 		// 创建ViewPager的adapter
 		FragmentAdapter adapter = new FragmentAdapter(
 				getSupportFragmentManager(), fragments, titles);

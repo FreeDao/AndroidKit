@@ -2,8 +2,11 @@ package com.hh.kit.home;
 
 import java.io.File;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +24,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.hh.kit.CommonActivity;
 import com.hh.kit.R;
+import com.hh.kit.manager.WifiAdmin1;
+import com.hh.kit.sld.MainActivity;
 import com.hh.kit.utils.Log;
 import com.hh.kit.views.CircleImageView;
 import com.hh.kit.views.DynamicPopShowLoader;
@@ -40,13 +45,38 @@ public class HomeMainActivity extends CommonActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_main);
+		findViewById(R.id.butterknife).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(HomeMainActivity.this,
+								ButterKnifeActivity.class);
+						startActivity(intent);
+					}
+				});
+		findViewById(R.id.exviewpager).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(HomeMainActivity.this,
+								ScrollViewPagerActivity.class);
+						startActivity(intent);
+					}
+				});
+		findViewById(R.id.androidm).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(HomeMainActivity.this,
+						MainActivity.class);
+				startActivity(intent);
+			}
+		});
 		findViewById(R.id.volley).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				gotoTestVolley();
 			}
 		});
-
 		et_ssid = (EditText) findViewById(R.id.et_ssid);
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_mode = (EditText) findViewById(R.id.et_mode);
@@ -57,13 +87,18 @@ public class HomeMainActivity extends CommonActivity {
 
 			@Override
 			public void onClick(View v) {
-				WifiAdmin wifiAdmin = new WifiAdmin(HomeMainActivity.this);
-				wifiAdmin.openWifi();
-				wifiAdmin.addNetwork(wifiAdmin.CreateWifiInfo(et_ssid.getText()
-						.toString(), et_password.getText().toString(), Integer
-						.parseInt(et_mode.getText().toString())));
+				// WifiAdmin wifiAdmin = new WifiAdmin(HomeMainActivity.this);
+				// wifiAdmin.openWifi();
+				// wifiAdmin.addNetwork(wifiAdmin.CreateWifiInfo(et_ssid.getText()
+				// .toString(), et_password.getText().toString(), Integer
+				// .parseInt(et_mode.getText().toString())));
 				// int netId = mWifiManager.addNetwork(wifiConfig);
 				// mWifiManager.enableNetwork(netId, true);
+				String mac = "";
+				WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+				WifiInfo info = wifi.getConnectionInfo();
+				mac = info.getMacAddress() + "-----" + info.getBSSID();
+				System.out.println("mac:" + mac);
 			}
 		});
 		findViewById(R.id.wifi1).setOnClickListener(new OnClickListener() {

@@ -8,6 +8,24 @@
     <include layout="@layout/common_title" />
 
     <Button
+        android:id="@+id/butterknife"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="butterknife" />
+
+    <Button
+        android:id="@+id/exviewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="exviewpager" />
+
+    <Button
+        android:id="@+id/androidm"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="androidm" />
+
+    <Button
         android:id="@+id/volley"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

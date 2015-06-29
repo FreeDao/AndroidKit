@@ -10,6 +10,7 @@ package com.hh.kit;
 
 import android.app.Application;
 import android.content.Context;
+import butterknife.ButterKnife;
 
 import com.hh.kit.utils.PreferencesUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -32,6 +33,7 @@ public class CommonApplication extends Application {
 		mInstance = this;
 		PreferencesUtils.init(mInstance);
 		initImageLoader();
+		ButterKnife.setDebug(BuildConfig.DEBUG);
 	}
 
 	public static CommonApplication getInstance() {
